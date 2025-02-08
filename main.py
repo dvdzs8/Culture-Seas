@@ -1,9 +1,9 @@
 import pygame
-import Scene_Start
-import Scene_Island1
-import Scene_CruiseShip
-import Scene_AnchoredShip
-import game_manager
+from Scene_Start import NameEntryScene
+from Scene_Island1 import IslandMapScene
+from Scene_CruiseShip import CruiseShipScene
+from Scene_AnchoredShip import LoadingScreen
+from game_manager import GameManager
 
 
 def main():
@@ -14,13 +14,13 @@ def main():
     pygame.display.set_caption("Cruise Adventure")
 
     # Initialize GameManager
-    game = game_manager(screen)
+    game = GameManager(screen)
 
     # Create scenes
-    scene_start = Scene_Start(game)
-    scene_cruise = Scene_CruiseShip(game)
-    scene_anchored = Scene_AnchoredShip(game)
-    scene_island1 = Scene_Island1(game)
+    scene_start = NameEntryScene(game)
+    scene_cruise = CruiseShipScene(game)
+    scene_anchored = LoadingScreen(game)
+    scene_island1 = IslandMapScene(game)
 
     # Add scenes to GameManager
     game.add_scene("start", scene_start)
