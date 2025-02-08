@@ -10,6 +10,9 @@ class Dialogue:
         self.character_portrait = None  # Placeholder for character portraits
         self.dialogue_history = []  # History to keep track of past dialogue
 
+    def enter(self):
+        print("Entered the dialogue map scene")
+
     def start_dialogue(self):
         """Start the dialogue with the NPC."""
         self.is_active = True
