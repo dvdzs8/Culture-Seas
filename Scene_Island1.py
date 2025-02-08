@@ -56,14 +56,16 @@ class IslandMapScene:
                 # if self.is_npc_clicked("Adelle"):
                 #     self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
                 if event.button == 1:  # Left mouse button
-                    if self.is_npc_clicked("Adelle"):
-                        print(f"Clicked on NPC: {self.npc_name}")
-
+                    print("Oh, hello! Welcome to Israelisles!")
+                    quick = input("(1) Haha, how'd you know I wasn't from around here?\n(2) Oh, hello! Where exactly am I?\n")
+                    if (quick == "1"):
+                        print("Oh, please. We Russian Jews here especially have such a close community;\nwe all know each other, and I haven't seen you before! What brings you here?")
+                    elif (quick == "2"):
+                        print("Hm, you mean Israelisles? Or, Culture Seas? I'm one of the creators of this experience.\nYou are here to see the beauty of how all of us come together on the cruise despite being from such different backgrounds!")
 
     def is_npc_clicked(self, npc_name):
         mouse_x, mouse_y = pygame.mouse.get_pos()
         npc_rect = pygame.Rect(self.npc_position[0], self.npc_position[1], 64, 64)
-        print("test 1")
         return npc_rect.collidepoint(mouse_x, mouse_y)
 
     def update(self):
