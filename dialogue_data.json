@@ -14,12 +14,71 @@
             }
         },
         "response_2": {
-            "text": "That's the spirit, {player}!",
+            "text": "That's the spirit, {player}! Let's begin.",
             "choices": {}
         },
         "response_3": {
             "text": "Don't worry, you'll be fine!",
             "choices": {}
+        },
+        "response_4": {
+            "text": "Looks like we've reached {island name}! Are you ready to explore? ",
+            "choices": {
+                "Yes!, let's go": "response_5",
+                "Wait, I'm not ready yet.": "response_6"
+            }
+        },
+        "response_5": {
+            "text": "Get ready to get off board. Good luck with your adventure and I'll see you soon!",
+            "choices": {
+                "Thank you, see you later!": "response_7",
+                "Thanks!, I'll be back soon": "response_7"
+            }
+        },
+        "response_6": {
+            "text": "Would you like to stay on the ship a little longer? ",
+            "choices": {
+                "Yes please": "response_1",
+                "I changed my mind. I think I'm ready to explore": "response_5"
+            }
+        },
+        "response_7": {
+            "text": "Hello, I am ... Nice to meet you! Welcome to Israeland",
+            "choices": {
+                "Hi nice to meet you too! Can you tell me more about the island?": "response_8",
+                "Hey, nice to meet you too! Where do you recommend we go?": "response_9",
+                "Hi, nice to meet you! I'm feeling a little hungry. Can we grab a bite to eat?": "response_10"
+            }
+        },
+        "response_8": {
+            "text": "I would love to! Israel was established in 1948 and since then is home to many religions, cultures, and special landmarks!",
+            "choices": {
+                "Wow, I would love to learn more about the religions!": "response_11"
+            }
+
+        },
+        "response_9" : {
+            "text": "There are so many places we can visit! Why don't we grab a bite to eat first?",
+            "choices": {
+                "Yes, I can't wait to get a taste of Israel! ": "response_12",
+                "Maybe let's start elsewhere? I'm in the mood to explore.": "response_11"
+            }
+        },
+        "response_11" : {
+            "text": "Amazing! Why don't we head over to one of the most sacred places in the world for Jews, Christians, and Muslims",
+            "choices" : {
+                "Sounds like a plan!": "response_13",
+                "What are other interesting landmarks we can visit?": "response_14"
+            }
+        },
+        "response_12" : {
+            "text" : "Welcome to the shuk! It is a vibrant, bustling market where the sights, sounds, and smells of local life come together. From fresh fruits, vegetables, and spices to handmade goods and traditional foods, it’s a sensory experience that offers a taste of the country’s diverse culture and history. Whether you're haggling for a bargain or savoring street food, the shuk is the heartbeat of Israel’s daily life.",
+
+
+
+
         }
+
+
     }
 }
