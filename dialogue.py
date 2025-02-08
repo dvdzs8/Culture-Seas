@@ -1,69 +1,71 @@
 import pygame
-import json
 
 class Dialogue:
-    def __init__(self, font, screen, dialogue_file, player_name="Player"):
+    def __init__(self, font, screen, dialogue_data):
         self.font = font
         self.screen = screen
-        self.player_name = player_name  # Store the player's name
+        self.dialogue_data = dialogue_data
+        self.current_message = "start"  # Starting point of dialogue
         self.is_active = False
-        self.current_scene = None
-        self.current_message = None
+        self.character_portrait = None  # Placeholder for character portraits
+        self.dialogue_history = []  # History to keep track of past dialogue
 
-        # Load dialogue JSON file
-        with open(dialogue_file, "r", encoding="utf-8") as file:
-            self.dialogue_data = json.load(file)
+    def start_dialogue(self):
+        """Start the dialogue with the NPC."""
+        self.is_active = True
 
-    def start_dialogue(self, scene_name, start_point="start"):
-        """Start the dialogue for a specific scene."""
-        if scene_name in self.dialogue_data:
-            self.current_scene = scene_name
-            self.current_message = start_point
-            self.is_active = True
-        else:
-            print(f"Error: Scene '{scene_name}' not found in dialogue data.")
+    def handle_events(self):
+        """Handle player input during dialogue."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                self.advance_dialogue()
 
     def advance_dialogue(self):
         """Move to the next message in the dialogue."""
-        if not self.is_active or not self.current_scene or not self.current_message:
-            return
-
-        current_data = self.dialogue_data[self.current_scene].get(self.current_message, {})
+        current_data = self.dialogue_data[self.current_message]
         choices = current_data.get("choices", {})
 
         if choices:
-            # Automatically select the first available choice (for now)
-            self.current_message = list(choices.values())[0]
+            # If there are choices, move to the next dialogue based on the first choice
+            # In a more complex system, you can use button presses or selections to choose the path.
+            self.current_message = list(choices.values())[0]  # Simple auto-choice for now
         else:
-            self.is_active = False  # End dialogue
+            self.is_active = False  # End the dialogue when no more choices
+
+    def update(self):
+        """Update logic for the dialogue system."""
+        pass
 
     def draw(self):
-        """Draw the dialogue and choices on screen."""
-        if not self.is_active or not self.current_scene:
-            return
+        """Draw the dialogue and options on screen."""
+        if self.is_active:
+            # Clear screen before drawing new text
+            self.screen.fill((255, 255, 255))  # White background
 
-        self.screen.fill((255, 255, 255))  # Clear screen
+            # Get current message to display
+            current_message = self.dialogue_data[self.current_message]["text"]
 
-        # Get current dialogue data
-        current_data = self.dialogue_data[self.current_scene].get(self.current_message, {})
-        text = current_data.get("text", "No dialogue found.")
-        speaker = current_data.get("speaker", "Charles")
+            # Render the current message
+            text_surface = self.font.render(current_message, True, (0, 0, 0))
+            self.screen.blit(text_surface, (50, 500))  # Position text
 
-        # Replace {player} with the actual player's name
-        text = text.replace("{player}", self.player_name)
+            # Draw the choices if available
+            choices = self.dialogue_data[self.current_message].get("choices", {})
+            y_offset = 550  # Starting position for choices
+            for choice, next_message in choices.items():
+                choice_text = self.font.render(choice, True, (0, 0, 0))
+                self.screen.blit(choice_text, (50, y_offset))
+                y_offset += 40  # Move down for the next option
 
-        # Render and display text
-        dialogue_text = f"{speaker}: {text}"  # Format as "Tim: Hey Kiera!"
-        rendered_text = self.font.render(dialogue_text, True, (0, 0, 0))
+    def get_current_speaker(self):
+        """Return the current speaker based on the dialogue (if needed)."""
+        return "NPC"  # Just an example, this could be dynamic based on the character
 
-        self.screen.blit(rendered_text, (50, 500))
+    def display_portrait(self):
+        """Display the character portrait of the current speaker (if applicable)."""
+        # You can load the character portrait image based on the current speaker
+        pass
 
-        # Display choices with player's name dynamically added before speech
-        choices = current_data.get("choices", {})
-        y_offset = 550
-        for choice_text, next_message in choices.items():
-            # Format the player's response as "Kiera: Hey!"
-            formatted_choice = f"{self.player_name}: {choice_text}"
-            choice_rendered = self.font.render(formatted_choice, True, (0, 0, 0))
-            self.screen.blit(choice_rendered, (50, y_offset))
-            y_offset += 40
