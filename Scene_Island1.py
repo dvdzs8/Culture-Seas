@@ -1,73 +1,125 @@
 import pygame
+import pytmx
 from dialogue import Dialogue
 
 
 class IslandMapScene:
     def __init__(self, game_manager):
         self.game_manager = game_manager
-        self.npcs = ["Alder", "Tara", "Vance"]  # Example NPCs on the island
         self.font = pygame.font.Font(None, 36)
         self.dialogue_system = None
 
+        # Single NPC setup
+        self.npc_name = "Adelle"
+        self.npc_position = (320, 128)  # Set a fixed position for the NPC
+        self.npc_sprite = pygame.image.load("assets/adelle.png")  # Load NPC sprite
+
+        self.player_name = "[NAME]"
+        self.player_position = pygame.Vector2(128, 576)
+        self.player_sprite = pygame.image.load("assets/Char.png")
+
+        self.tile_size = 32  # Tile size (32x32)
+        self.sprite_size = 64
+        self.player_speed = 1
+        self.player_image = pygame.Surface((64, 64))
+        self.player_image.fill((0,0, 255))
+        self.move_delay = 200  # Milliseconds between moves
+        self.last_move_time = 0  # Store the last movement time
+
+        self.tmx_data = pytmx.load_pygame("assets/island1.tmx")
+        self.collision_tiles = self.get_collision_tiles()
+
     def enter(self):
         """Called when the scene is first loaded."""
-        print("Entered the island map scene")
+        print("Entered the island 1 scene")
+        # self.dialogue_system = Dialogue(self.font, self.game_manager.screen, "")
 
-        # Example dialogue for one NPC (Alder)
-        alder_dialogue_data = {
-            "start": {
-                "text": "Welcome to the island! What brings you here?",
-                "choices": {
-                    "Tell me about the island": "island_info",
-                    "I'm just passing through": "pass_through"
-                }
-            },
-            "island_info": {
-                "text": "The island is rich in history, with many old ruins.",
-                "choices": {
-                    "Tell me more!": "more_info",
-                    "Goodbye": "end"
-                }
-            },
-            "end": {
-                "text": "Goodbye, traveler!",
-                "choices": {}
-            }
-        }
+    def get_collision_tiles(self):
+        """Extract collision tile positions from the TMX file."""
+        collision_tiles = set()
+        layer_name = "Collision Layer"  # Change this to your collision layer name
 
-        self.dialogue_system = Dialogue(self.font, self.game_manager.screen, alder_dialogue_data)
+        for layer in self.tmx_data.layers:
+            if layer.name == layer_name:
+                for x, y, gid in layer:
+                    if gid != 0:  # Non-zero GIDs are collision tiles
+                        collision_tiles.add((x * self.tmx_data.tilewidth, y * self.tmx_data.tileheight))
+        return collision_tiles
 
     def handle_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                # Check if the player clicked on an NPC (e.g., Alder)
-                if self.is_npc_clicked("Alder"):
-                    self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
+            # elif event.type == pygame.MOUSEBUTTONDOWN:
+            #     # Check if the player clicked on an NPC (e.g., Alder)
+            #     if self.is_npc_clicked("Adelle"):
+            #         self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
 
     def is_npc_clicked(self, npc_name):
-        """Check if an NPC's area was clicked."""
-        # Logic for checking if the mouse click is within the bounds of an NPC
-        return True  # Simplified for now, assume the NPC was clicked
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        npc_rect = pygame.Rect(self.npc_position[0], self.npc_position[1], self.sprite_size)
+        return npc_rect.collidepoint(mouse_x, mouse_y)
 
     def update(self):
         """Update logic for island map scene."""
-        if self.dialogue_system.is_active:
-            self.dialogue_system.update()
+        # if self.dialogue_system.is_active:
+        #     self.dialogue_system.update()
+
+        current_time = pygame.time.get_ticks()
+        if current_time - self.last_move_time < self.move_delay:
+            return  # Skip movement if delay hasn't passed
+
+        keys = pygame.key.get_pressed()
+        moved = False  # Track if movement happens
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
+            moved = self.move_player(-self.tile_size, 0)
+        elif keys[pygame.K_d]:
+            moved = self.move_player(self.tile_size, 0)
+        elif keys[pygame.K_w]:
+            moved = self.move_player(0, -self.tile_size)
+        elif keys[pygame.K_s]:
+            moved = self.move_player(0, self.tile_size)
+
+        if moved:
+            self.last_move_time = current_time
+
+    def move_player(self, dx, dy):
+        new_x = self.player_position.x + dx
+        new_y = self.player_position.y + dy
+
+        if self.is_walkable(new_x, new_y):
+            self.player_position.x = new_x
+            self.player_position.y = new_y
+            return True
+        return False
+
+    def is_walkable(self, x, y):
+        player_rect = pygame.Rect(x, y+32, 32, 32)
+        for tile_pos in self.collision_tiles:
+            tile_rect = pygame.Rect(tile_pos[0], tile_pos[1], self.tile_size, self.tile_size)
+            if player_rect.colliderect(tile_rect):
+                return False  # Collision detected
+        return True
 
     def draw(self, screen):
         """Draw the island map scene."""
-        screen.fill((255, 228, 181))  # Sand-like background
-        text = self.font.render("Island Map - Choose an NPC", True, (0, 0, 0))
+        self.draw_background(screen)
+        text = self.font.render("Israelisles", True, (0, 0, 0))
         screen.blit(text, (100, 50))
 
-        # List NPCs
-        for i, npc in enumerate(self.npcs):
-            npc_text = self.font.render(npc, True, (0, 0, 0))
-            screen.blit(npc_text, (100, 100 + i * 40))
+        screen.blit(self.npc_sprite, self.npc_position)
+        screen.blit(self.player_sprite, self.player_position)
+        # if self.dialogue_system.is_active:
+        #     # Draw the dialogue interface
+        #     self.dialogue_system.draw()
 
-        if self.dialogue_system.is_active:
-            # Draw the dialogue interface
-            self.dialogue_system.draw()
+    def draw_background(self, screen):
+        for layer in self.tmx_data.layers:
+            if isinstance(layer, pytmx.TiledTileLayer):
+                for x, y, tile in layer:
+                    tile_image = self.tmx_data.get_tile_image_by_gid(tile)
+                    if tile_image:
+                        screen.blit(tile_image, (x*self.tmx_data.tilewidth,y*self.tmx_data.tileheight))
