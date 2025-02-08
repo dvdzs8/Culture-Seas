@@ -1,9 +1,9 @@
 import pygame
-from game_manager import GameManager
-from name_entry import NameEntryScene
-from cruise_ship import CruiseShipScene
-from loading_screen import LoadingScreen
-from island_map import IslandMap
+import Scene_Start
+import Scene_Island1
+import Scene_CruiseShip
+import Scene_AnchoredShip
+import game_manager
 
 
 def main():
@@ -14,33 +14,33 @@ def main():
     pygame.display.set_caption("Cruise Adventure")
 
     # Initialize GameManager
-    game_manager = GameManager(screen)
+    game = game_manager(screen)
 
     # Create scenes
-    name_entry_scene = NameEntryScene(game_manager)
-    cruise_ship_scene = CruiseShipScene(game_manager)
-    loading_screen_scene = LoadingScreen(game_manager)
-    island_map_scene = IslandMap(game_manager)
+    scene_start = Scene_Start(game)
+    scene_cruise = Scene_CruiseShip(game)
+    scene_anchored = Scene_AnchoredShip(game)
+    scene_island1 = Scene_Island1(game)
 
     # Add scenes to GameManager
-    game_manager.add_scene("name_entry", name_entry_scene)
-    game_manager.add_scene("cruise_ship", cruise_ship_scene)
-    game_manager.add_scene("loading", loading_screen_scene)
-    game_manager.add_scene("island_map", island_map_scene)
+    game.add_scene("start", scene_start)
+    game.add_scene("cruise", scene_cruise)
+    game.add_scene("anchor", scene_anchored)
+    game.add_scene("island1", scene_island1)
 
     # Start the game with the first scene
-    game_manager.change_scene("name_entry")
+    game.change_scene("start")
 
     clock = pygame.time.Clock()
 
     # Main game loop
     while True:
         # Handle events
-        game_manager.current_scene.handle_events()
+        game.current_scene.handle_events()
 
         # Update and draw the current scene
-        game_manager.current_scene.update()
-        game_manager.current_scene.draw(screen)
+        game.current_scene.update()
+        game.current_scene.draw(screen)
 
         # Update the display
         pygame.display.flip()
