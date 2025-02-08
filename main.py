@@ -8,7 +8,6 @@ from game_manager import GameManager
 
 def main():
     pygame.init()
-
     # Set up the display
     screen = pygame.display.set_mode((1280, 720))
     pygame.display.set_caption("Cruise Adventure")
