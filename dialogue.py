@@ -1,5 +1,4 @@
 import pygame
-import json
 
 class Dialogue:
     def __init__(self, font, screen, dialogue_file, player_name="Player", npc_name="NPC"):
@@ -12,18 +11,21 @@ class Dialogue:
         self.current_message = None
         self.buttons = []
 
-        # Load dialogue JSON file
-        with open(dialogue_file, "r", encoding="utf-8") as file:
-            self.dialogue_data = json.load(file)
+    def enter(self):
+        print("Entered the dialogue map scene")
 
-    def start_dialogue(self, scene_name, start_point="start"):
-        """Start the dialogue for a specific scene."""
-        if scene_name in self.dialogue_data:
-            self.current_scene = scene_name
-            self.current_message = start_point
-            self.is_active = True
-        else:
-            print(f"Error: Scene '{scene_name}' not found in dialogue data.")
+    def start_dialogue(self):
+        """Start the dialogue with the NPC."""
+        self.is_active = True
+
+    def handle_events(self):
+        """Handle player input during dialogue."""
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                self.advance_dialogue()
 
     def advance_dialogue(self, choice=None):
         """Move to the next message in the dialogue based on player's choice."""
@@ -53,9 +55,10 @@ class Dialogue:
             y_offset += 70
 
     def draw(self):
-        """Draw the dialogue and choices on screen."""
-        if not self.is_active or not self.current_scene:
-            return
+        """Draw the dialogue and options on screen."""
+        if self.is_active:
+            # Clear screen before drawing new text
+            self.screen.fill((255, 255, 255))  # White background
 
         pygame.draw.rect(self.screen, (42, 42, 138), pygame.Rect(0, 450, 1280, 300))
         current_data = self.dialogue_data[self.current_scene].get(self.current_message, {})
@@ -68,7 +71,10 @@ class Dialogue:
         dialogue_text = f"{speaker}: {text}"
         rendered_text = self.font.render(dialogue_text, True, (0, 0, 0))
 
-        self.screen.blit(rendered_text, (50, 500))
+    def display_portrait(self):
+        """Display the character portrait of the current speaker (if applicable)."""
+        # You can load the character portrait image based on the current speaker
+        pass
 
         choices = current_data.get("choices", {})
         if choices:

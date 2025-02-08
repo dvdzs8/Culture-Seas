@@ -4,6 +4,7 @@ from Scene_Island1 import IslandMapScene
 from Scene_CruiseShip import CruiseShipScene
 from Scene_AnchoredShip import LoadingScreen
 from game_manager import GameManager
+from dialogue import Dialogue
 
 
 def main():
@@ -20,12 +21,14 @@ def main():
     scene_cruise = CruiseShipScene(game)
     scene_anchored = LoadingScreen(game)
     scene_island1 = IslandMapScene(game)
+    scene_dialogue = Dialogue("applechancery", screen, "dialogue_data.json")
 
     # Add scenes to GameManager
     game.add_scene("start", scene_start)
     game.add_scene("cruise", scene_cruise)
     game.add_scene("anchor", scene_anchored)
     game.add_scene("island1", scene_island1)
+    game.add_scene("dialogue", scene_dialogue)
 
     # Start the game with the first scene
     game.change_scene("start")
