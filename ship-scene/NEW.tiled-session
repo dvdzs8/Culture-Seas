@@ -1,0 +1,65 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "/Users/wubbalubbadubdub/Desktop/TH5/pyxel_examples/Screen Shot 2025-02-08 at 7.32.50 AM.tsx": {
+            "scaleInDock": 0.3715
+        },
+        "asset-tmx/Lemon.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/chair_bottom.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "asset-tmx/chair_top.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/pool-side.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/pool-top.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/pool-water.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/rail.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/real_ocean.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/small_floor.tsx": {
+            "scaleInEditor": 1
+        },
+        "asset-tmx/special_floor.tsx": {
+            "scaleInEditor": 1
+        }
+    },
+    "last.imagePath": "/Users/wubbalubbadubdub/Desktop/new/asset-pngs",
+    "map.height": 22,
+    "map.lastUsedFormat": "tmx",
+    "map.width": 40,
+    "openFiles": [
+    ],
+    "project": "NEW.tiled-project",
+    "recentFiles": [
+        "asset-tmx/Lemon.tsx",
+        "asset-tmx/pool-top.tsx",
+        "asset-tmx/chair_top.tsx",
+        "asset-tmx/chair_bottom.tsx",
+        "asset-tmx/pool-water.tsx",
+        "asset-tmx/pool-side.tsx",
+        "asset-tmx/rail.tsx",
+        "asset-tmx/special_floor.tsx",
+        "asset-tmx/small_floor.tsx",
+        "asset-tmx/real_ocean.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
