@@ -13,7 +13,7 @@ LIGHT_BLUE = (173, 216, 230)
 SAND_COLOR = (255, 228, 181)
 
 # Font settings
-FONT_NAME = "Arial"
+FONT_NAME = "applechancery"
 FONT_SIZE = 36
 DIALOGUE_FONT_SIZE = 48
 
