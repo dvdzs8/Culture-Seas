@@ -73,7 +73,18 @@
                 }
             },
             "response_12": {
-                "text": "Welcome to the shuk! It is a vibrant, bustling market where the sights, sounds, and smells of local life come together. From fresh fruits, vegetables, and spices to handmade goods and traditional foods, it’s a sensory experience that offers a taste of the country’s diverse culture and history. Whether you're haggling for a bargain or savoring street food, the shuk is the heartbeat of Israel’s daily life."
+                "text": "Welcome to the shuk! It is a vibrant, bustling market where the sights, sounds, and smells of local life come together. From fresh fruits, vegetables, and spices to handmade goods and traditional foods, it’s a sensory experience that offers a taste of the country’s diverse culture and history. Whether you're haggling for a bargain or savoring street food, the shuk is the heartbeat of Israel’s daily life.",
+                "choices" : {
+                    "How exciting! Those pastries look tasty, could we try them?": "response_15"
+                }
+            },
+            "response_13": {
+                "text": "This is Jerusalem, specifically known for its old city. It is a profound crossroads of faith, where the western wall stands as a symbol of Jewish devotion, the Church of the Holy Sepulchre marks the heart of Christian pilgrimage, and the Dome of the Rock shines as a sacred site for Muslims.",
+                "choices": {}
+            },
+            "response_15": {
+                "text": "Yes, try a bourekas! These flaky, both savory and sweet pastries are a childhood favorite of mine.",
+                "choices": {}
             }
     }
 }

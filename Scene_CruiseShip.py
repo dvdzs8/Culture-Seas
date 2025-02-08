@@ -19,7 +19,7 @@ class CruiseShipScene:
                 # Example of handling a click (this could be an interaction with a character)
                 print("Clicked on the cruise ship")
                 #switch to dialogue screen
-                self.game_manager.change_scene("dialogue")
+                self.game_manager.change_scene("island")
 
     def update(self):
         """Update logic for cruise ship scene."""
