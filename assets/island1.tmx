@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="1">
  <tileset firstgid="1" name="GroundsTileset" tilewidth="32" tileheight="32" tilecount="441" columns="21">
-  <image source="../../../OneDrive - University of Pittsburgh/School/School 2024-2025/TartanHacks/ground_tiles.png" width="672" height="701"/>
+  <image source="assets/ground_tiles.png" width="672" height="701"/>
  </tileset>
  <tileset firstgid="442" name="FieldsTileset" tilewidth="32" tileheight="32" tilecount="64" columns="8">
-  <image source="../../../OneDrive - University of Pittsburgh/School/School 2024-2025/TartanHacks/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" width="256" height="256"/>
+  <image source="assets/free-fields-tileset-pixel-art-for-tower-defense/1 Tiles/FieldsTileset.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="506" name="Props" tilewidth="32" tileheight="32" tilecount="45" columns="9">
-  <image source="../../../OneDrive - University of Pittsburgh/School/School 2024-2025/TartanHacks/The Fan-tasy Tileset (Free)/Art/Props/Atlas/Props.png" width="288" height="160"/>
+  <image source="assets/The Fan-tasy Tileset (Free)/Art/Props/Atlas/Props.png" width="288" height="160"/>
  </tileset>
  <tileset firstgid="551" name="building_1" tilewidth="32" tileheight="32" tilecount="289" columns="17">
   <grid orientation="orthogonal" width="16" height="16"/>
-  <image source="../../../OneDrive - University of Pittsburgh/School/School 2024-2025/TartanHacks/PNG/building_1.png" width="559" height="549"/>
+  <image source="assets/PNG/building_1.png" width="559" height="549"/>
  </tileset>
  <layer id="6" name="Collision Layer" width="40" height="22">
   <data encoding="csv">
