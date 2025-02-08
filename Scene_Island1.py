@@ -51,14 +51,19 @@ class IslandMapScene:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 exit()
-            # elif event.type == pygame.MOUSEBUTTONDOWN:
-            #     # Check if the player clicked on an NPC (e.g., Alder)
-            #     if self.is_npc_clicked("Adelle"):
-            #         self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # Check if the player clicked on an NPC (e.g., Alder)
+                # if self.is_npc_clicked("Adelle"):
+                #     self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
+                if event.button == 1:  # Left mouse button
+                    if self.is_npc_clicked("Adelle"):
+                        print(f"Clicked on NPC: {self.npc_name}")
+
 
     def is_npc_clicked(self, npc_name):
         mouse_x, mouse_y = pygame.mouse.get_pos()
-        npc_rect = pygame.Rect(self.npc_position[0], self.npc_position[1], self.sprite_size)
+        npc_rect = pygame.Rect(self.npc_position[0], self.npc_position[1], 64, 64)
+        print("test 1")
         return npc_rect.collidepoint(mouse_x, mouse_y)
 
     def update(self):

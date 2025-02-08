@@ -28,7 +28,7 @@ def main():
     game.add_scene("island1", scene_island1)
 
     # Start the game with the first scene
-    game.change_scene("start")
+    game.change_scene("island1")
 
     clock = pygame.time.Clock()
 
