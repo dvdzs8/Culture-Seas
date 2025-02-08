@@ -1,0 +1,25 @@
+{
+    "ship_start_scene": {
+        "start": {
+            "text": "Charles: Hey {player}!",
+            "choices": {
+                "Hey!": "response_1"
+            }
+        },
+        "response_1": {
+            "text": "Excited for our adventure?",
+            "choices": {
+                "Yes, I can't wait!": "response_2",
+                "I'm a little nervous.": "response_3"
+            }
+        },
+        "response_2": {
+            "text": "That's the spirit, {player}!",
+            "choices": {}
+        },
+        "response_3": {
+            "text": "Don't worry, you'll be fine!",
+            "choices": {}
+        }
+    }
+}
