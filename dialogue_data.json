@@ -34,7 +34,7 @@
                 "text": "Get ready to get off board. Good luck with your adventure and I'll see you soon!",
                 "choices": {
                     "Thank you, see you later!": "response_7",
-                    "Thanks!, I'll be back soon": "response_7"
+                    "Thanks! I'll be back soon": "response_7"
                 }
             },
             "response_6": {
