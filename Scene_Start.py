@@ -17,12 +17,11 @@ class NameEntryScene:
                 exit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    self.game_manager.change_scene("cruise")  # Move to the cruise ship scene
+                    self.game_manager.change_scene("island1")  # Move to the cruise ship scene
                 elif event.key == pygame.K_BACKSPACE:
                     self.name = self.name[:-1]
                 else:
                     self.name += event.unicode  # Add character to name
-
 
     def update(self):
         """Any updates to the scene logic."""
@@ -31,12 +30,17 @@ class NameEntryScene:
     def draw(self, screen):
         """Draw the scene."""
         screen.fill((21, 21, 100))  # Blank background
-        pygame.draw.rect(screen, (42, 42, 138), pygame.Rect(1280/4 - 50, 720/2 - 50, 600, 70))
-        pygame.draw.rect(screen, (65, 65, 138), pygame.Rect(1280/4 - 50, 720/2 - 50, 600, 70), 5)
 
+        # Calculate the width of the name text to dynamically adjust the input box size
+        text_surface = self.font.render(self.name, True, (213, 213, 255))
+        input_box_width = max(600, text_surface.get_width() + 60)  # Ensure minimum width of 600
+
+        # Draw the background rectangle for the input box
+        pygame.draw.rect(screen, (42, 42, 138), pygame.Rect(1280 / 4 - 50, 720 / 2 - 80, input_box_width, 100))
+        pygame.draw.rect(screen, (65, 65, 138), pygame.Rect(1280 / 4 - 50, 720 / 2 - 80, input_box_width, 100), 5)
+
+        # Draw the label and the name text
         self.font = pygame.font.SysFont("applechancery", 44)
-
-        #name_text = self.font.render(f"Enter your name: \n{self.name}", True, (213, 213, 255))
 
         # Create text with a newline (here we split the text into two lines)
         display_text = f"Enter your name:\n{self.name}"
@@ -45,7 +49,7 @@ class NameEntryScene:
         lines = display_text.split('\n')
 
         # Set starting Y position
-        y_offset = 720 / 3
+        y_offset = 900 / 3
 
         # Render each line of text
         for line in lines:
