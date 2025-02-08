@@ -57,9 +57,9 @@ class IslandMapScene:
             #         self.dialogue_system.start_dialogue()  # Start the dialogue with Alder
 
     def is_npc_clicked(self, npc_name):
-        """Check if an NPC's area was clicked."""
-        # Logic for checking if the mouse click is within the bounds of an NPC
-        return True  # Simplified for now, assume the NPC was clicked
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        npc_rect = pygame.Rect(self.npc_position[0], self.npc_position[1], self.sprite_size)
+        return npc_rect.collidepoint(mouse_x, mouse_y)
 
     def update(self):
         """Update logic for island map scene."""
@@ -76,11 +76,11 @@ class IslandMapScene:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
             moved = self.move_player(-self.tile_size, 0)
-        if keys[pygame.K_d]:
+        elif keys[pygame.K_d]:
             moved = self.move_player(self.tile_size, 0)
-        if keys[pygame.K_w]:
+        elif keys[pygame.K_w]:
             moved = self.move_player(0, -self.tile_size)
-        if keys[pygame.K_s]:
+        elif keys[pygame.K_s]:
             moved = self.move_player(0, self.tile_size)
 
         if moved:
@@ -94,13 +94,12 @@ class IslandMapScene:
             self.player_position.x = new_x
             self.player_position.y = new_y
             return True
-
         return False
 
     def is_walkable(self, x, y):
-        player_rect = pygame.Rect(x, y, 64, 64)
+        player_rect = pygame.Rect(x, y+32, 32, 32)
         for tile_pos in self.collision_tiles:
-            tile_rect = pygame.Rect(tile_pos[0], tile_pos[1], self.tmx_data.tilewidth, self.tmx_data.tileheight)
+            tile_rect = pygame.Rect(tile_pos[0], tile_pos[1], self.tile_size, self.tile_size)
             if player_rect.colliderect(tile_rect):
                 return False  # Collision detected
         return True
