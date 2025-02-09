@@ -1,6 +1,8 @@
 # Culture Seas 
 TartanHacks 2025
 Creators: David Shi, Insiah Kizilbash, Jessica Hsin, Adelle Melnikov
+https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
+https://www.youtube.com/watch?v=Ha9Wmbtq5EE
 ## Goal
 Highlight the beauty of genuine and meaningful human connection
 
@@ -42,6 +44,8 @@ How unlikely yet incredible is it that four people came together on the same col
   - runs the game loop
 
 ## How to Use
+- Clone or download the repository
+- With Python 3.13, Pygame, and PyTMX installed on your device, run the following command in the terminal after changing directories to the repository: py main.py
 - User moves using w(up), a(left), s(down), d(right) keys
 - After typing the desired name into the start screen, hit enter to change to the cruise ship view
 - To talk to a character, move using the keys specified and click on the character
