@@ -2,7 +2,7 @@
 TartanHacks 2025
 Creators: David Shi, Insiah Kizilbash, Jessica Hsin, Adelle Melnikov
 ## Goal
-- To promote real and meaningful human connection through a virtual game
+Highlight the beauty of genuine and meaningful human connection
 
 ## Spiel
 The Against the Current track encourages us to submit a project that is not related to AI. We drew inspiration from this and took it further. What would happen if we went "against the current" of tech influx over the past decades instead? Culture Seas highlights the beauty of human connection with cozy, cultural, and meaningful vibes. 
