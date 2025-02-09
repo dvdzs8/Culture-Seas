@@ -1,8 +1,10 @@
 # Culture Seas 
 TartanHacks 2025
 Creators: David Shi, Insiah Kizilbash, Jessica Hsin, Adelle Melnikov
-https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
-https://www.youtube.com/watch?v=Ha9Wmbtq5EE
+
+- https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
+- https://www.youtube.com/watch?v=Ha9Wmbtq5EE
+
 ## Goal
 Highlight the beauty of genuine and meaningful human connection
 
