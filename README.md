@@ -2,8 +2,8 @@
 TartanHacks 2025
 Creators: David Shi, Insiah Kizilbash, Jessica Hsin, Adelle Melnikov
 
-- https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
-- https://www.youtube.com/watch?v=Ha9Wmbtq5EE
+- Presentation: https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
+- Video Demo: https://www.youtube.com/watch?v=Ha9Wmbtq5EE
 
 ## Goal
 Highlight the beauty of genuine and meaningful human connection
@@ -44,6 +44,9 @@ How unlikely yet incredible is it that four people came together on the same col
   - advance_dialogue: user chooses dialogue options to respond to the island resident
 - main:
   - runs the game loop
+
+## Challenges
+Dialogue boxes were the main focus of our game which we would funnel the enjoyable nature of conversation through. However, after getting the file to work, we had trouble integrating everything together between functions and GitHub conflicts. Down to the wire, we quickly switched gears and implemented a basic console functionality instead so that we could retain some feel of the whole game. We also committed much of our time to figuring out Tiled and tilemaps, but we eventually got there albeit without knowing that .tmx files contain absolute paths on your personal computer for its tiles!
 
 ## How to Use
 - Clone or download the repository
