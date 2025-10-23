@@ -2,8 +2,9 @@
 TartanHacks 2025
 Creators: David Shi, Insiah Kizilbash, Jessica Hsin, Adelle Melnikov
 
-- Presentation: https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
+## Check Out Our Video Demo!
 - Video Demo: https://www.youtube.com/watch?v=Ha9Wmbtq5EE
+- Presentation: https://docs.google.com/presentation/d/1ncjYsTzNHGWsVEASKVvvvBabJLUvanFI-_UMcfBBwe0/edit?usp=sharing
 
 ## Goal
 Highlight the beauty of genuine and meaningful human connection
